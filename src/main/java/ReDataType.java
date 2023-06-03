@@ -17,5 +17,7 @@ public class ReDataType {
 
         String[] season = {"봄", "여름", "가을", "겨울"};
         System.out.println(Arrays.toString(season));
+
+        System.out.println(season[season.length -1]);
     }
 }
