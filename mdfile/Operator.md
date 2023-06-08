@@ -100,5 +100,3 @@ public class Operator {
     }
 }
 ```
-
-### 비트 연산자
