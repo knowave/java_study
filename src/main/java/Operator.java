@@ -4,6 +4,9 @@ public class Operator {
         boolean a = true;
         boolean b = false;
 
+
+
+        /* 논리 연산자 */
         System.out.println(a && b); // false
         System.out.println(a && true);  // true
         System.out.println(a || b); // true
