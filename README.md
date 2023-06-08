@@ -1,4 +1,4 @@
-## Java Study
+## Java Syntax Study
 
 **Java 문법 공부 공간**
 
