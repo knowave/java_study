@@ -30,6 +30,33 @@ for-each 문은 배열이나 collection같은 것들을 반복문을 쉽게 짤 
 
 ```java
 public class Loop {
-    public static void main(String[] args) {}
+    public static void main(String[] args) {
+        String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+
+        for (String day: days) {
+            System.out.println(day);    // Monday Tuesday Wednesday Thursday Friday Saturday Sunday
+        }
+    }
 }
 ```
+위 코드처럼 string 배열 타입의 변수를 선언하고 `for` 뒤에 소괄호를 열어서 소괄호안에 type과 변수이름을 정하고 `:`을 이용해서 `days`를 넣어준 뒤 사용하면 `for`문과는 다르게 더욱 더 간편하게 사용할 수 있다.
+
+### while 문
+
+```java
+public class Loop {
+    public static void main(String[] args) {
+        int i = 0;
+        int result = 0;
+
+        while (i < 10) {
+            result += (i + 1);
+            i++;
+        }
+
+        System.out.println(result);
+    }
+}
+```
+
+위 코드보면 for 문과는 다르게 초기화값을 블럭 밖에서 선언을 하고 `while`의 소괄호 안에 밖에서 선언한 `i`를 가져와서 조건문을 써주고, `i`를 증가 시키는 것도 블럭안에서 `i++` 이런식을 처리를 해준다. 
