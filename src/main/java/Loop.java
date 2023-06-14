@@ -30,5 +30,17 @@ public class Loop {
         }
 
         System.out.println(result);
+
+        // do-while 문
+
+        int j = 0;
+        int r = 0;
+
+        do {
+            r += (j + 1);
+            j++;
+        } while (j < 10);
+
+        System.out.println(r);
     }
 }

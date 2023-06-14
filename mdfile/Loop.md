@@ -54,7 +54,7 @@ public class Loop {
             i++;
         }
 
-        System.out.println(result);
+        System.out.println(result); // 55
     }
 }
 ```
@@ -62,3 +62,25 @@ public class Loop {
 위 코드보면 for 문과는 다르게 초기화값을 블럭 밖에서 선언을 하고 `while`의 소괄호 안에 밖에서 선언한 `i`를 가져와서 조건문을 써주고, `i`를 증가 시키는 것도 블럭안에서 `i++` 이런식을 처리를 해준다.
 
 만약 블럭 맨 아래에 `i++`을 적어주지 않으면 무한루프에 빠져서 코드가 띁나지 않는다. 왜냐면 i를 증가시켜주지 않고 조건문인 10보다 작으니까 계속해서 실행을 하는것이다.
+
+### do-while 문
+
+```java
+public class Loop {
+    public static void main(String[] args) {
+        int i = 0;
+        int sum = 0;
+
+        do {
+            sum += (i + 1);
+            i++;
+        } while (i < 10);
+
+        System.out.println(sum);    // 55
+    }
+}
+```
+
+기존 while 문은 조건을 먼저 확인을 하는데 조건을 확인하지 않고, 수행부터 먼저하는 것이 do-while 문이다.
+
+위에 예시 코드처럼 `do`를 먼저 써주고 `do` 블럭 뒤에 `while (conditional)`을 써주면된다. `do`는 말 그대로 하라는 뜻으로 `do`를 먼저 실행하고, `while`문을 확인해서 조건에 맞으면 계속해서 수행을 하는 것이다. 
