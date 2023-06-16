@@ -33,3 +33,38 @@ public class OOP1 {
     }
 }
 ```
+
+class 내부에 있는 method를 사용하기 위해서는 인스턴스화가 필요하다.
+```java
+class Calculation {
+    int add(int x, int y) {
+        return x + y;
+    }
+
+    int subtract(int x, int y) {
+        return x - y;
+    }
+}
+
+public class OOP1 {
+    public static void main(String[] args) {
+        // write your code here
+        Calculation calculation = new Calculation(); // 인스턴스화를 시켜준다.
+        int addResult = calculation.add(1, 2); // 인스턴스화를 시킨 변수를 이용하여 method를 호출한다.
+        int subtractResult = calculation.subtract(2, 1); // 인스턴스화를 시킨 변수를 이용하여 method를 호출한다.
+
+        System.out.println(addResult); // 3
+        System.out.println(subtractResult); // 1
+    }
+}
+```
+
+#### 생성자 (constructor)
+
+생성자는 **Instance**가 생성될 때 즉, `new`라는 키워드를 통해서 class의 instance를 생성했을 때 그때 불리는 초기화 method이다. (new를 통해서 불러와짐.)
+
+생성자의 형식은 class의 이름이 있으면 class의 이름이랑 똑같은 이름으로 지어줘야 한다. (생성자의 규칙) 그리고 생성자는 리턴값이 없다. `new` 키워드를 사용하면 그 개체 결과가 return이 되지 특별히 다른 값이 return이 되지 않듯이 return값이 없다.
+
+```java
+
+```
