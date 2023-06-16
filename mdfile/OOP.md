@@ -65,6 +65,29 @@ public class OOP1 {
 
 생성자의 형식은 class의 이름이 있으면 class의 이름이랑 똑같은 이름으로 지어줘야 한다. (생성자의 규칙) 그리고 생성자는 리턴값이 없다. `new` 키워드를 사용하면 그 개체 결과가 return이 되지 특별히 다른 값이 return이 되지 않듯이 return값이 없다.
 
-```java
+생성자를 만들어주지 않으면 Java compiler가 아무것도 없는 빈 생성자 하나를 자동으로 만들어줘서 `new class()`를 해서 괄호 안에 아무 값을 넣지않고 Instance를 생성할 수 있는 것이다.
 
+```java
+class Phone {
+    String model;
+    String color;
+    int price;
+
+    public Phone (String model, String color, int price) { // 생성자 이름은 class 이름과 같아야한다.
+        this.model = model; // this. 뒤에 있는 model은 위에서 정의한 model이다.
+        this.color = color;
+        this.price = price;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Phone galaxy = new Phone();
+
+        Phone iphone =new Phone();
+
+        System.out.println("철수는 이번에 " + galaxy.model + galaxy.color + " + 색상을 " + galaxy.price + "만원에 샀다.");
+        System.out.println("영희는 이번에 " + iphone.model + iphone.color + " + 색상을 " + iphone.price + "만원에 샀다.");
+    }
+}
 ```
