@@ -105,7 +105,7 @@ public class OOP {
 
 상속을 보여주는 **UML Class Diagram**이 존재하는데, 자동차라는 클래스가 있으면 하위 계층으로 SUV와 SEDAN이 존재한다.
 
-![스크린샷 2023-06-17 오후 1.43.25.png](..%2F..%2F..%2F..%2F..%2F..%2F..%2Fvar%2Ffolders%2F94%2Fjmgk38ln7gqdgmk5ncklmg8r0000gn%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_1yd8y1%2F%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202023-06-17%20%EC%98%A4%ED%9B%84%201.43.25.png)
+![](https://velog.velcdn.com/images/kwaktaemin_/post/8989533f-4873-40da-a18f-9d0b0888082c/image.png)
 
 위 그림과 같이 Car Class는 부모 클래스가 되고, SUV와 SEDAN Class는 자식 Class가 된다.
 
