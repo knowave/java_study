@@ -110,9 +110,94 @@ public class OOP {
 위 그림과 같이 Car Class는 부모 클래스가 되고, SUV와 SEDAN Class는 자식 Class가 된다.
 
 ```java
+class Animal {
+    String name;
+
+    public void cry() {
+        System.out.println(name + " is crying.");
+    }
+}
+
+class Dog extends Animal {
+    public Dog(String name) {
+        this.name = name;
+    }
+
+    public void swim() {
+        System.out.println(name + " is swimming.");
+    }
+}
+
 public class OOP {
     public static void main(String[] args) {
-        System.out.println("hi");
+        // write your code here
+        Dog dog = new Dog("강아지");
+        dog.cry();
+        dog.swim();
+
+        Animal dog2 = new Dog("왈왈");
+        dog2.cry();
+    }
+}
+```
+
+**상속은 여러 Class를 상속받을 수 없으며, 하나의 Class만 상속을 받을 수 있다.**
+
+### overloading
+
+**overloading**은 한 Class 내에서 동일한 이름의 method를 여러개 갖는 것을 의미하는데, <u>하지만 이름이 같다고 해서 무조건 overloading은 아니다.</u>
+
+어떤 조건이냐면 method 이름이 첫 번째로 동일해야하고, 매개 변수의 개수나 type이 달라야한다. 또한 return type이 다른 경우는 overloading으로 치지 않는다.
+
+```java
+public class OOP {
+    public static void main(String[] args) {
+        // write your code here
+    }
+
+    int add(int x, int y, int z) {
+        return x + y + z;
+    }
+
+    long add(int a, int b, long c) {
+        return a + b + c;
+    }
+}
+```
+### overriding
+
+overriding은 부모의 class로부터 상속받은 method 즉, 부모 class에 있는 method를 똑같이 자식 class에 정의를 하는 것을 의미한다. 이런 작업을 통해서 덮어 버린다고 이해하면 좋을 것 같다. (부모에 있던 원래 함수의 내용은 없는 셈)
+
+```java
+class Animal {
+    String name;
+    String color;
+
+    public Animal(String name) {
+        this.name = name;
+    }
+
+    public void cry() {
+        System.out.println(name + " is crying.");
+    }
+}
+
+class Dog extends Animal {
+    public Dog(String name) {
+        super(name);
+    }
+
+    @Override
+    public void cry() {
+        System.out.println(name + " is barking.");
+    }
+}
+
+public class OOP {
+    public static void main(String[] args) {
+        // write your code here
+        Animal dog = new Dog("강아지");
+        dog.cry();
     }
 }
 ```
