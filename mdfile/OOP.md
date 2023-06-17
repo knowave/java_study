@@ -15,7 +15,7 @@ class Phone {
     int price;
 }
 
-public class OOP1 {
+public class OOP {
     public static void main(String[] args) {
         Phone galaxy = new Phone();
         galaxy.model = "Galaxy10";
@@ -46,7 +46,7 @@ class Calculation {
     }
 }
 
-public class OOP1 {
+public class OOP {
     public static void main(String[] args) {
         // write your code here
         Calculation calculation = new Calculation(); // 인스턴스화를 시켜준다.
@@ -80,7 +80,7 @@ class Phone {
     }
 }
 
-public class Main {
+public class OOP {
     public static void main(String[] args) {
         Phone galaxy = new Phone();
 
@@ -88,6 +88,28 @@ public class Main {
 
         System.out.println("철수는 이번에 " + galaxy.model + galaxy.color + " + 색상을 " + galaxy.price + "만원에 샀다.");
         System.out.println("영희는 이번에 " + iphone.model + iphone.color + " + 색상을 " + iphone.price + "만원에 샀다.");
+    }
+}
+```
+
+### 상속
+
+**상속**은 <u>**기존의 클래스를 재사용하는 방식 중의 하나**</u>로 한 번 작성한 코드가 재사용이 필요하다면 변경사항만 코드로 작성하여 상대적으로 적은 양의 코드를 작성할 수 있다.
+
+클래스를 재사용하여 코딩을 한다면 코드와 클래스가 많아질수록 관리가 용이하다는 장점이 존재하며 상속을 통해서 클래스간의 계층구조를 만들게 된다.
+
+상속의 특징으로는 아래와 같다.
+1. 부모 클래스에서 정의된 필드와 메서드를 물려 받는다.
+2. 새로운 필드와 메서드를 추가할 수 있다.
+3. 부모 클래스로부터 물려받은 메서드를 수정할 수 있다.
+
+상속을 보여주는 **UML Class Diagram**이 존재하는데, 자동차라는 클래스가 있으면 하위 계층으로 SUV와 SEDAN이 존재한다.
+![스크린샷 2023-06-17 오후 1.43.25.png](..%2F..%2F..%2F..%2F..%2F..%2F..%2Fvar%2Ffolders%2F94%2Fjmgk38ln7gqdgmk5ncklmg8r0000gn%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_1yd8y1%2F%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202023-06-17%20%EC%98%A4%ED%9B%84%201.43.25.png)
+
+```java
+public class OOP {
+    public static void main(String[] args) {
+        System.out.println("hi");
     }
 }
 ```
