@@ -1,31 +1,18 @@
-class Animal {
-    String name;
-    String color;
+import pkg.ModifierTest;
 
-    public Animal(String name) {
-        this.name = name;
-    }
-
-    public void cry() {
-        System.out.println(name + " is crying.");
-    }
-}
-
-class Dog extends Animal {
-    public Dog(String name) {
-        super(name);
-    }
-
-    @Override
-    public void cry() {
-        System.out.println(name + " is barking.");
+class Child extends ModifierTest {
+    void callParentProtected() {
+        System.out.println("Call my parent's protected method");
+        super.messageProtected();
     }
 }
 
 public class OOP {
     public static void main(String[] args) {
-        // write your code here
-        Animal dog = new Dog("강아지");
-        dog.cry();
+        ModifierTest modifierTest = new ModifierTest();
+        modifierTest.messageOutside();
+
+        Child child = new Child();
+        child.callParentProtected();
     }
 }

@@ -201,3 +201,67 @@ public class OOP {
     }
 }
 ```
+
+### 접근제어자
+
+**접근제어자**는 멤버 변수와 함수 혹은 클래스에 사용되고, 외부에서의 접근을 제한하는 역할을 한다.
+
+- private: 같은 클래스 내에서만 접근이 가능하다.
+- default(nothing): 같은 패키지 내에서만 접근이 가능하다.
+- protected: 같은 패키지 내에서, 그리고 다른 패키지의 자식 클래스에서 접근이 가능하다.
+- public: 접근 제한이 없다.
+
+```java
+package pkg; // package 경로 이름
+
+public class ModifierTest {
+    private void messageInside() { // 같은 클래스 안에 있는 것이 접근 가능
+        System.out.println("This is private Modifier");
+    }
+
+    public void messageOutside() {
+        System.out.println("This is public Modifier");
+        messageInside(); // 같은 클래스 내부에서 접근이 가능하므로 호출
+    }
+
+    protected void messageProtected() {
+        System.out.println("This is protected Modifier");
+    }
+}
+
+```
+
+```java
+import pkg.ModifierTest;
+
+class Child extends ModifierTest {
+    void callParentProtected() {
+        System.out.println("Call my parent's protected method");
+        super.messageProtected(); // super는 상속 받은 부모 클래스를 가리키는 키워드
+    }
+}
+
+public class OOP {
+    public static void main(String[] args) {
+        ModifierTest modifierTest = new ModifierTest();
+        modifierTest.messageOutside(); // This is public Modifier / This is private Modifier
+
+        Child child = new Child();
+        child.callParentProtected(); // Call my parent's protected method / This is protected Modifier
+    }
+}
+```
+
+OOP 클래스에서 modifierTest 클래스를 받고 `messageOutside()` 메서드를 실행시켰더니 `This is public Modifier / This is private Modifier`가 출력되었다.
+
+아까 `pkg` 패키지에서 `ModifierTest` 구현체를 보면 public 메서드 인 `messageOutside()`에서 `private messageInside()` 메서드를 호출해줬기 때문에 `This is private Modifier`가 출력이 될 수 있다.
+
+`modifierTest.messageInside()`를 하면 `private`이라 당연히 불러올 수 없고, `modifierTest.messageProtected()`도 불러올 수 없다.
+
+그 이유는 `modifierTest.messageProtected()`의 제어자는 `protected`이기 때문이다. 위에 설명했듯이 같은 패키지내에서 혹은 다른 패키지의 자식 클래스 안에서 사용할 수 가 있다.
+
+그래서 `Child` 클래스를 인스턴스화 해주고 `child.callParentProtected()`를 하면 protected 타입인 `messageProtected()`를 호출할 수 있다.
+
+또한 `Child` 클래스의 `void CallParentProtected()` 메서드는 앞에 아무것도 안 붙어있기 때무에 패키지 privete이다. 그럼 어떻게 호출이 되냐면 
+
+최상위 아무것도 없는 Java 밑에 있는 것이기 때문에 호출이 되고, 하지만 다른 패키지에서 아무 제한자를 정하지 않은채 넘긴다면 다른 패키지에서 불러올 수 없다.
