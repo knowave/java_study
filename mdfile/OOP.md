@@ -265,3 +265,76 @@ OOP 클래스에서 modifierTest 클래스를 받고 `messageOutside()` 메서�
 또한 `Child` 클래스의 `void CallParentProtected()` 메서드는 앞에 아무것도 안 붙어있기 때무에 패키지 privete이다. 그럼 어떻게 호출이 되냐면 
 
 최상위 아무것도 없는 Java 밑에 있는 것이기 때문에 호출이 되고, 하지만 다른 패키지에서 아무 제한자를 정하지 않은채 넘긴다면 다른 패키지에서 불러올 수 없다.
+
+### 추상클래스
+
+**추상클래스**란 추상메서드를 선언할 수 있는 클래스를 의미한다. 또한 <u>**추상클래스는 클래스와는 다르게 상속받는 클래스 없이 그 자체로 인스턴스를 생성할 수 없다.**</u>
+
+추상메서드는 설계만 되어있고, **수행되는 코드에 대해서는 작성이 안된 메서드다.** 이처럼, 미완성으로 남겨두는 이유는 <u>**상속받는 클래스마다 반드시 동작이 달라지는 경우에 상속받는 클래스는 개발자가 반드시 작성하도록하기 위함이다.**</u>
+
+```java
+abstract class Bird {
+    private int x,y,z;
+    
+    void fly(int x, int y, int z) {
+        printLocation();
+        System.out.println("이동합니다.");
+        
+        this.x = x;
+        this.y = y;
+        
+        if(flyable(z)) {
+            this.z = z;
+        } else {
+            System.out.println("그 높이로는 날 수 없습니다.");
+        }
+        
+        printLocation();
+    }
+    
+    abstract boolean flyable(int z);
+    
+    public void printLocation() {
+        System.out.println("현재 위치 {" + x + ", " + ", " + y + ", " + z + "}");
+    }
+}
+
+class Pigeon extends Bird {
+    @Override
+    boolean flyable(int z) {
+        return z < 10000;
+    }
+}
+
+class Peacock extends Bird {
+    @Override
+    boolean flyable(int z) {
+        return false;
+    }
+}
+
+public class OOP {
+    public static void main(String[] args) {
+        Bird pigeon = new Pigeon();
+        Bird peacock = new Peacock();
+
+        System.out.println("pigeon");
+        pigeon.fly(1, 1, 3);
+
+        System.out.println("peacock");
+        peacock.fly(1, 1, 3);
+
+        System.out.println("pigeon");
+        pigeon.fly(1, 1, 30000);
+    }
+}
+```
+
+추상클래스를 만들 떄, `abstract`를 class 앞에 적어줘서 추상클래스를 만들어주고 그 클래스안에서 해당 로직을 짜주는데, 본인은 날지 못하는 새에 대해서 추상메서드를 만들어줬다.
+
+추상메서드도 추상클래스와 똑같이 앞에 `abstract`를 붙여서 추상 메서드를 만들 수 있다. 하지만 추상메서드를 만들 때 주의할 점은 중괄호를 뒤에 붙여주면 에러가 발생하는데, 추상메서드의 body는 `abstract methods`가 가질 수 없기 때문이다.
+
+추상클래스는 인스턴스화를 할 수 없기 때문에 자식 클래스를 이용하여 인스턴스를 하는데, 자식클래스인 `Bird`를 인스턴스를 기존에 했던 것들 처럼 하면 에러가 발생한다. 그 이유는 추상 클래스를 인스턴스화 할 수 없기 때문이다.
+
+추상클래스를 불러오기 위해서는 다른 구현체에서 상속받아서 추상메서를 구현해줘야 한다. 본인은 `Pigeon`이라는 클래스를 만들어서 `@override` 어노테이션을 이용해서 추상메서드의 이름과 동일하게 구현을 해준다. 
+
