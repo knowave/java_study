@@ -1,2 +1,3 @@
-package PACKAGE_NAME;public interface Swimmable {
+public interface Swimmable {
+    void swim(int x, int y);
 }

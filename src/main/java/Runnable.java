@@ -1,2 +1,3 @@
-package PACKAGE_NAME;public interface Runnable {
+public interface Runnable {
+    void run(int x, int y);
 }
