@@ -338,3 +338,33 @@ public class OOP {
 
 추상클래스를 불러오기 위해서는 다른 구현체에서 상속받아서 추상메서를 구현해줘야 한다. 본인은 `Pigeon`이라는 클래스를 만들어서 `@override` 어노테이션을 이용해서 추상메서드의 이름과 동일하게 구현을 해준다. 
 
+### 인터페이스
+
+**인터페이스**는 객체의 특정 행동의 특징을 정의하는 간단한 문법이다. 인터페이스는 함수의 특징인 접근제어자, 리턴타입, 메서드 이름만 정의한다.
+
+함수의 로직은 없고, 인터페이스를 구현하는 클래스는 인터페이스에 존재하는 함수의 로직을 반드시 구현해야 한다.
+
+```java
+interface Flyable {
+    void fly(int x, int y, int z);
+}
+
+class Pigeon implements Flyable { // extends로 클래스를 상속하는 키워드와 다르게 인터페이스는 implements로 가져온다.
+    private int x, y, z;
+    
+    @Override
+    public void fly(int x, int y, int z) {
+        System.out.println("구국구");
+    }
+}
+
+public class OOP {
+    public static void main(String[] args) {}
+}
+```
+
+위에서 설명했듯이 인터페이스는 메서드를 구현하지 않고 **body**없이 남겨두고 인터페이스를 사용하는 클래스에서 **body**를 구현해줘야한다.
+
+추상클래스와 비슷하게 인터페이스를 사용하는 클래스 내부에 override 어노테이션을 사용해서 로직을 구현한다. 인터페이스에서는 필드도 정의하지 않았기 때문에 인터페이스를 사용하는 클래스에서 필드정의도 해준다.
+
+그리고 상속과는 다르게 여러개의 인터페이스를 구현할 수 있다. 단, 메서드 내용을 클래스 내부에서 구현만 해준다면 가능하다.
