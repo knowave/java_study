@@ -101,3 +101,14 @@ public class Exception {
 ```
 
 위 코드처럼 코드가 길어질 뿐만 아니라 `FileOutputStream`을 열고 닫을 떄 생기는 `Exception`까지 그 상위에서 `catch`를 하거나 `throws`로 감싸줘야 한다.
+
+### 메서드에서 예외 선언
+
+`catch`문을 이용해서 예외 처리를 하지 않은 경우, 메서드에 `throws`로 예외가 발생할 수 있는 것을 알려줘야 한다. `throws` 키워드가 있는 함수를 호출하면, `caller`쪽에서 `catch`와 관련된 코드를 작성해줘야 한다.
+```java
+void method() throws IndexOutOfBoundsException, IllegalArgumentException { 
+    // method 내용
+}
+```
+
+이처럼 키워드 `throws`를 사용해서 메서드 내에서 발생할 수 있는 예외를 적어주면 된다.
