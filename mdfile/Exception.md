@@ -86,7 +86,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class Exception {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException{
         FileOutputStream out = new FileOutputStream("test.txt");
         try {
             // test.txt file에 Hello World 출력
