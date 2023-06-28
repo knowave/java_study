@@ -8,3 +8,4 @@
 - [조건문](https://github.com/knowave/java_syntax_study/blob/main/mdfile/Conditional.md)
 - [반복문](https://github.com/knowave/java_syntax_study/blob/main/mdfile/Loop.md)
 - [객체지향](https://github.com/knowave/java_syntax_study/blob/main/mdfile/OOP.md)
+- [예외, 에러 처리](https://github.com/knowave/java_syntax_study/blob/main/mdfile/Exception.md)
