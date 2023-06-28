@@ -18,6 +18,8 @@ Java에서는 상속을 이용해서 모든 예외를 표현한다. 모든 예�
 
 파일을 읽고 쓰거나, 원격에 있는 저장소로부터 데이터를 읽고 쓸 때 나는 에러를 표현하려면 `IOException`을 상속받아서 정의한다.
 
+### try-catch(-finally)
+
 ```java
 public class Exception {
     public static void main(String[] args) {
@@ -47,3 +49,55 @@ public class Exception {
 좁은 범위의 예외부터 앞에서 선언하는 것이 좋다. 여기서 좁은 범위는 상속관계에서 자식 클래스에 위치 할수록 좁은 법위다.
 
 예를 들어 `IOException`이 발생할 것 같아 예외 처리를 하고, 그 외의 예외 처리를 하고 싶다면 `IOException`을 `catch`하는 구문을 먼저, `Exception`을 `catch`하는 구문을 그 뒤에 작성한다.
+
+### try-with-resource
+
+`try-catch`문 외에 `try-with-resource`문도 존재한다. 입출려과 함께 쓰이는 구문이며, 일반적으로 사용됐던 자원을 끝난 후에 닫아줘야하는 것들이 존재하는데 `try-with-resource`문이 있다.
+
+기존에 `try-catch(-finally)`문은 자원을 닫을 때 `close()`를 사용해야한다. `try-with-resource`문은 `try`를  벋어나는 순간 자동으로 `close()`가 호출된다.
+
+사용방법은 `try()`안의 입출력 스트림을 생성하는 로직을 작성할 때 해당 객체가 `AutoClosable` 인터페스를 구현한 객체여야 한다.
+```java
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class Exception {
+    public static void main(Stirng[] args) {
+        
+        try (FileOutputStream out = new FileOutputStream("test.txt")) {
+            // test.txt file에 Hello World를 출력
+            out.write("Hello World".getBytes());
+            out.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+이처럼 형식은 `try-catch`문과 비슷하지만, `try()`안에 `AutoClosable` 인터페이스를 구현한 객체를 선언하면 사용할 수 있다.
+
+> **AutoClosable 인터페이스**를 사용해야하는 이유는 AutoClosable 인터페이스에는 예외가 발생할 경우 `close()`메서드를 호출하기로 정의되어 있기 때문이다.
+
+만약 `try-catch`문을 사용한다면 아래와 같은 코드가 된다.
+
+```java
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class Exception {
+    public static void main(String[] args) {
+        FileOutputStream out = new FileOutputStream("test.txt");
+        try {
+            // test.txt file에 Hello World 출력
+            out.write("Hello World".getBytes());
+            out.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        out.close();
+    }
+}
+```
+
+위 코드처럼 코드가 길어질 뿐만 아니라 `FileOutputStream`을 열고 닫을 떄 생기는 `Exception`까지 그 상위에서 `catch`를 하거나 `throws`로 감싸줘야 한다.

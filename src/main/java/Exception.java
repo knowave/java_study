@@ -1,17 +1,15 @@
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 public class Exception {
     public static void main(String[] args) {
-        int number = 10;
-        int result;
 
-        for(int i = 10; i >= 0; i--) {
-            try {
-                result = number / i;
-                System.out.println(result);
-            } catch (java.lang.Exception e) {
-                System.out.println("Exception 발생: " + e.getMessage());
-            } finally {
-                System.out.println("항상 실행되는 finally 구문");
-            }
+        try (FileOutputStream out = new FileOutputStream("test.txt")) {
+            out.write("Hello World!".getBytes());
+            out.flush();
+        } catch (IOException e) {
+            System.out.println("IoException 발생: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 }
